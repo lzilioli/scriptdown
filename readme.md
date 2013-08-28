@@ -2,6 +2,10 @@
 
 	python scriptdown.py script.sd
 
+	# or
+
+	python scriptdown.py script.sd > out.html # (for testing)
+
 Outputs html formatted to display the script.
 
 # Script Format
