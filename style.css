@@ -1,0 +1,96 @@
+body {
+	background-color: #F7F7F7;
+	margin: 0;
+}
+
+#content {
+
+	font-family: "Courier New" "Monaco";
+
+	width: 680px;
+	margin: 30px 0 30px 100px;
+
+	padding: 30px;
+	background-color: #FFF;
+	/*border-bottom: 5px solid #000;
+	border-top: 5px solid #000;*/
+}
+
+/*@media print {
+	#content {
+		border: 0;
+	}
+}*/
+
+.title {
+	text-align: center;
+	margin: 300px 0;
+}
+
+.episode:before, .episode:after {
+	content: '"';
+}
+
+.author {
+	margin-top: 60px;
+}
+
+.author:before {
+	content: 'written by';
+	display: block;
+}
+
+.scene-head {
+	text-transform: uppercase;
+	text-decoration: underline;
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+.scene-end {
+	text-transform: uppercase;
+	text-decoration: underline;
+	text-align: center;
+}
+
+.scene-end:not(:last-child) {
+	margin-bottom: 300px;
+}
+
+.scene-end:before {
+	content: "End ";
+}
+
+.loc-head {
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+
+.name {
+	margin-bottom: 0;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.dialog {
+	width: 320px;
+	margin: 0 auto;
+}
+
+.dialog, .parenthetical {
+	margin: 0 auto;
+}
+
+.parenthetical {
+	box-sizing: border-box;
+	width: 320px;
+	padding-left: 55px;
+}
+
+.parenthetical:before {
+	content: '(';
+}
+
+.parenthetical:after {
+	content: ')'
+}
