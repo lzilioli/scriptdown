@@ -99,3 +99,25 @@ Symbol | Indicator
 * Paging, with headers at top of page
 * Less syntax, auto detect switch between new speaker back to action because of skiped line
 * Flag to include comments as sticky notes on page
+
+# Grunt
+
+This project uses [grunt](http://gruntjs.com/).
+
+Anyway, if you want to be able to build out the sass assets for the site, you will need grunt on your machine.
+
+1. Install node, grunt and npm. There are a few methods for doing this, [pick your poison](https://gist.github.com/isaacs/579814).
+	* As of July 2013, it looks like running `brew install node` doesn't include an npm install.
+2. In the project's root directory, run
+
+		npm install
+3. This will populate the (hidden) `node_modules` directory with a few things needed for grunt to do its thing. For more info on all of this, check out the [grunt documentation](http://gruntjs.com/getting-started).
+
+If you're working on the CSS for the scripts, you'll need Grunt.
+
+I haven't documented the grunt commands yet, but for now, run:
+
+1. `grunt`, followed by
+* `grunt watch`
+
+Grunt will poll for changes to the files in `www/gui/sass` and spit out their corresponding css in `www/gui/build/css`. If you add scripts to the scripts folder, these will be compiled and moved over to the corresponding vuild directory as well.

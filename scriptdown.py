@@ -16,12 +16,10 @@ state = 'meta'
 meta = {}
 output = """
 	<div id="header">
-		<div class="show">%s</div><div class="episode">%s</div>
-		<div class="date">%s</div>
+		<div class="show">%s</div><div class="episode">%s</div><div class="date">%s</div>
+		<div class="note">%s</div>
 	</div>
 	<div id="content">
-	<div id="footer">
-	</div>
 """
 
 for line in contents:
@@ -67,8 +65,12 @@ for line in contents:
 			else:
 				output += '<p class="dialog">' + trimmedLine + '</p>\n'
 
-output += "</div></body></html>"
+output += """
+	</div>
+	<div id="footer">
+	</div>
+"""
 
 # TODO: put on a queue the whole time and pop them off here so the order is preserved
-output %= (meta['show'], meta['episode'], meta['date'])
+output %= (meta['show'], meta['episode'], meta['date'], meta['note'])
 print(output.strip())

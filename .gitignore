@@ -1,0 +1,5 @@
+.DS_STORE
+.sass-cache/
+_old/
+www/gui/build/
+

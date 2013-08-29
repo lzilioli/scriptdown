@@ -1,9 +1,9 @@
-<? $cmd = 'python scriptdown.py script.sd' ?>
+<? $cmd = 'python scriptdown.py samples/mofamdd.sd' ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<link href="style.css" rel="stylesheet" type="text/css">
+		<link href="www/gui/build/css/tv.css" rel="stylesheet" type="text/css">
 	</head>
 	<?= `$cmd` ?>
 </html>
