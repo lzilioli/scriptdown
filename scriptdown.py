@@ -14,14 +14,15 @@ contents = f.splitlines()
 blankLineCount = 0
 state = 'meta'
 meta = {}
-output = '\
-	<html>\
-		<head>\
-			<link href="style.css" rel="stylesheet" type="text/css">\
-		</head>\
-	<body>\
-	<div id="content">\
-'
+output = """
+	<div id="header">
+		<div class="show">%s</div><div class="episode">%s</div>
+		<div class="date">%s</div>
+	</div>
+	<div id="content">
+	<div id="footer">
+	</div>
+"""
 
 for line in contents:
 	if state == 'meta':
@@ -68,4 +69,6 @@ for line in contents:
 
 output += "</div></body></html>"
 
+# TODO: put on a queue the whole time and pop them off here so the order is preserved
+output %= (meta['show'], meta['episode'], meta['date'])
 print(output.strip())
