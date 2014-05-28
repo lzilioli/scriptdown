@@ -6,6 +6,7 @@ regex = {
 	'block-comment' : '\/\*.*\*\/'
 }
 
+## Open the file
 f = open(sys.argv[1], 'r').read()
 f = re.sub(regex['single-comment'], '', f)
 f = re.sub(regex['block-comment'], '', f, flags=re.DOTALL)
@@ -14,31 +15,29 @@ contents = f.splitlines()
 blankLineCount = 0
 state = 'meta'
 meta = {}
-output = """
-	<div id="header">
-		<div class="show">%s</div><div class="episode">%s</div><div class="date">%s</div>
-		<div class="note">%s</div>
-	</div>
-	<div id="content">
-"""
+output = ''
 
 for line in contents:
 	if state == 'meta':
-		if not line.strip(): # Blank line, after 2, the state changes
-			blankLineCount+=1
+		# If the line is blank
+		if not line.strip():
+			blankLineCount += 1
+			# After two blank lines, we presume the meta section is done
 			if blankLineCount == 2:
+				# Switch to script state
+				state = 'script'
+				# Add the title to the output
 				output += '\
 				<div class="title">\
 					<div class="show">' + meta['show'] + '</div>\
 					<div class="episode">"' + meta['episode'] + '"</div>\
 					<div class="author">written by<br>' + meta['author'] + '</div>\
 				</div>'
-				state = 'script'
 		else:
 			blankLineCount = 0
 			lineWords = line.split(' ')
-			title = lineWords[0]
-			meta[title] = line.replace(title, ' ').strip()
+			key = lineWords[0]
+			meta[key] = line.replace(key, ' ').strip()
 	if state == 'script':
 		trimmedLine = line.strip();
 		if line and line[0] == '\t':
@@ -65,12 +64,19 @@ for line in contents:
 			else:
 				output += '<p class="dialog">' + trimmedLine + '</p>\n'
 
-output += """
+output = """
+	<div id="header">
+		<div class="show">%s</div>
+		<div class="episode">%s</div>
+		<div class="date">%s</div>
+		<div class="note">%s</div>
 	</div>
-	<div id="footer">
+	<div id="content">
+		""" + output + """
 	</div>
+	<div id="footer"></div>
 """
 
-# TODO: put on a queue the whole time and pop them off here so the order is preserved
 output %= (meta['show'], meta['episode'], meta['date'], meta['note'])
+
 print(output.strip())
