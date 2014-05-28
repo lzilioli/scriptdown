@@ -1,20 +1,25 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	font-family: Courier New, Courier, Monaco;
 	background-color: #F7F7F7;
-	margin: 0;
 }
 
-#content {
+$contentWidth: 780px;
 
-	width: 680px;
-	margin: 30px 0 30px 100px;
+#content {
+	width: $contentWidth;
+	margin: 30px auto;
 
 	padding: 50px;
 	background-color: #FFF;
-	/*border-bottom: 5px solid #000;
-	border-top: 5px solid #000;*/
 }
 
+// Only visible on print media
 #header {
 	width:	100%;
 	margin-left: 60px;
@@ -34,10 +39,11 @@ body {
 	}
 }
 
+// Hide the header unless printing
 @media screen {
-    #header, #footer {
-        display: none;
-    }
+	#header, #footer {
+		display: none;
+	}
 }
 
 @media print {
@@ -47,11 +53,11 @@ body {
 	}
 	@page {
 		margin-top: 30px;
-	    counter-increment: page;
-	    counter-reset: page 1;
-	    @top-right {
-	        content: counter(page);
-	    }
+		counter-increment: page;
+		counter-reset: page 1;
+		@top-right {
+			content: counter(page);
+		}
 	}
 }
 
@@ -60,20 +66,12 @@ body {
 	margin: 300px 0;
 }
 
-.episode:before, .episode:after {
-	content: "\"";
-}
-
 .author {
 	margin-top: 60px;
 }
 
-.author:before {
-	content: 'written by';
-	display: block;
-}
-
 .scene-head {
+	margin: 1em 0;
 	text-transform: uppercase;
 	text-decoration: underline;
 	text-align: center;
@@ -90,11 +88,8 @@ body {
 	margin-bottom: 300px;
 }
 
-.scene-end:before {
-	content: "End ";
-}
-
 .loc-head {
+	margin: 1em 0;
 	text-transform: uppercase;
 	text-decoration: underline;
 }
@@ -105,13 +100,14 @@ body {
 	text-align: center;
 }
 
-.dialog {
-	width: 320px;
+// Center the two
+.dialog, .parenthetical {
 	margin: 0 auto;
 }
 
-.dialog, .parenthetical {
-	margin: 0 auto;
+.dialog {
+	width: 320px;
+	margin-bottom: 1em;
 }
 
 .parenthetical {
@@ -120,10 +116,6 @@ body {
 	padding-left: 55px;
 }
 
-.parenthetical:before {
-	content: '(';
-}
-
-.parenthetical:after {
-	content: ')'
+.action {
+	margin: 1em 0;
 }

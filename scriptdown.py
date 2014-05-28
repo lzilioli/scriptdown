@@ -30,8 +30,8 @@ for line in contents:
 				output += '\
 				<div class="title">\
 					<div class="show">' + meta['show'] + '</div>\
-					<div class="episode">' + meta['episode'] + '</div>\
-					<div class="author">' + meta['author'] + '</div>\
+					<div class="episode">"' + meta['episode'] + '"</div>\
+					<div class="author">written by<br>' + meta['author'] + '</div>\
 				</div>'
 				state = 'script'
 		else:
@@ -42,11 +42,11 @@ for line in contents:
 	if state == 'script':
 		trimmedLine = line.strip();
 		if line and line[0] == '\t':
-			output += '<p class="parenthetical">' + line.strip() + '</p>\n'
+			output += '<p class="parenthetical">(' + line.strip() + ')</p>\n'
 		elif trimmedLine:
 			if trimmedLine[:2] == '/#':
 				trimmedLine = trimmedLine.replace('/#', '', 1).strip()
-				output += '<p class="scene-end">' + trimmedLine + '</p>\n'
+				output += '<p class="scene-end">End ' + trimmedLine + '</p>\n'
 			elif trimmedLine[0] == '>':
 				trimmedLine = trimmedLine.replace('>', '')
 				if(trimmedLine.endswith('..')):
