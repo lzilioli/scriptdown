@@ -96,9 +96,10 @@ Symbol | Indicator
 
 * Make it support comments better
 * Less error prone
-* Paging, with headers at top of page
+* Paging, with headers at top of page (for printing)
 * Less syntax, auto detect switch between new speaker back to action because of skiped line
 * Flag to include comments as sticky notes on page
+* Genericize python script so that a syntax can be declared and mapped to different paragraphs or divs with a given classname.
 
 # Grunt
 
